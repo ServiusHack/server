@@ -29,6 +29,7 @@ else()
 			${CEF_ROOT_DIR}/build/libcef_dll_wrapper/Release
 			${CEF_ROOT_DIR}/build/libcef_dll
 			${CEF_ROOT_DIR}/build/libcef_dll_wrapper
+			${CEF_ROOT_DIR}/libcef_dll_wrapper
 			${CEF_ROOT_DIR}/Release)
 	if(WIN32)
 		find_library(CEFWRAPPER_LIBRARY_DEBUG
