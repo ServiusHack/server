@@ -182,12 +182,11 @@ class html_client
     }
 
   private:
-    bool GetViewRect(CefRefPtr<CefBrowser> browser, CefRect& rect)
+    void GetViewRect(CefRefPtr<CefBrowser> browser, CefRect& rect)
     {
         CASPAR_ASSERT(CefCurrentlyOn(TID_UI));
 
         rect = CefRect(0, 0, format_desc_.square_width, format_desc_.square_height);
-        return true;
     }
 
     void OnPaint(CefRefPtr<CefBrowser> browser,
@@ -246,6 +245,7 @@ class html_client
     }
 
     bool OnConsoleMessage(CefRefPtr<CefBrowser> browser,
+                          cef_log_severity_t    level,
                           const CefString&      message,
                           const CefString&      source,
                           int                   line) override
