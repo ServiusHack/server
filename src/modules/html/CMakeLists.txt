@@ -42,8 +42,7 @@ else()
 		common
 		core
 
-		${CEF_BIN_PATH}/libcef.so
-		${CEF_BIN_PATH}/libcef_dll_wrapper.a
+		${CEF_LIBRARIES}
 	)
 endif()
 
