@@ -3,6 +3,10 @@ FROM casparcg/base:1.2.0 as build-casparcg
 	COPY --from=casparcg/ffmpeg:master-acdea9e-2 /opt/ffmpeg /opt/ffmpeg
 	COPY --from=casparcg/cef:3.3239.1723-3 /opt/cef /opt/cef
 
+	RUN wget http://download.qt.io/official_releases/qt/5.10/5.10.0/qt-opensource-linux-x64-5.10.0.run
+	COPY ./tools/linux/qt-installer.js /qt-installer.js
+	RUN chmod +x qt-opensource-linux-x64-5.10.0.run && ./qt-opensource-linux-x64-5.10.0.run --platform minimal --script /qt-installer.js
+
 	RUN mkdir /source && mkdir /build && mkdir /install
 
 	COPY ./src /source
@@ -11,6 +15,7 @@ FROM casparcg/base:1.2.0 as build-casparcg
 
 	ENV BOOST_ROOT=/opt/boost
 	ENV PKG_CONFIG_PATH=/opt/ffmpeg/lib/pkgconfig
+	ENV Qt5Quick_DIR=/opt/Qt/5.10.0/gcc_64/lib/cmake/
 
 	ARG GIT_HASH
 
