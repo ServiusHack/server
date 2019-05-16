@@ -38,6 +38,8 @@ include_directories(${TBB_INCLUDE_PATH})
 
 source_group(sources ./*)
 
+set_property(TARGET casparcg PROPERTY CXX_STANDARD 14)
+
 target_link_libraries(casparcg
 		accelerator
 		common
