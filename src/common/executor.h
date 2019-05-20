@@ -60,7 +60,7 @@ class executor final
     }
 
     template <typename Func>
-    auto begin_invoke(Func&& func)
+    auto begin_invoke(Func&& func) -> std::future<decltype(func())>
     {
         if (!is_running_) {
             CASPAR_THROW_EXCEPTION(invalid_operation() << msg_info("executor not running."));
@@ -76,7 +76,7 @@ class executor final
     }
 
     template <typename Func>
-    auto invoke(Func&& func)
+    auto invoke(Func&& func) -> decltype(func())
     {
         if (is_current()) { // Avoids potential deadlock.
             return func();
